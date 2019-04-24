@@ -1,18 +1,7 @@
 import React from 'react';
 
 class Header extends React.Component {
-  state = {
-    value: '',
-    list: [{
-      id: 1,
-      title: 'Task'
-
-    }
-
-    ]
-  }
   
-
   handleChange = (event) => {
     this.setState({value: event.target.value})
   }
