@@ -1,46 +1,67 @@
 import React, { Component } from 'react';
-import Header from './components/Header';
-import Item from './components/Item';
+import Header from './Header';
+import Item from './Item';
 
 import './App.css';
 
 class App extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      toDoList: [{
-        id: 1,
-        title: 'Task 1',
-        isComplete: true,
-      }, {
-        id: 2,
-        title: 'Task 2',
-        isComplete: true,
-      }, {
-        id: 3,
-        title: 'Task 3',
-        isComplete: false,
-      }, {
-        id: 4,
-        title: 'Task 4',
-        isComplete: false,
-      }]
+      toDoList: [],
+      title: "",
+      id: 0
     }
+
+    this.handleAdd = this.handleAdd.bind(this);
   }
+
+  // onCheckedItem = (id) => {  alert("****"+id);
+
+  // }
+
+  handleAdd = () => {
+    const newTitle = this.state.title;    
+    const newId  = this.state.id+1;
+
+    const todoObj = {
+      id: newId,
+      title: newTitle,
+      isComplete: false,      
+    }
+    
+    const toDoList  = this.state.toDoList; 
+    const newTodoList = [...toDoList]; 
+    newTodoList.push(todoObj); 
+    
+    this.setState({ toDoList: newTodoList , id: newId});
+  }
+
+  handleChange = (e) => {
+    this.setState({title :e.target.value})
+  }
+
 
   render() {
     return (
-      <div className="App">
-        <Header title="To Do List" />
-              {
-                this.state.toDoList.map((toDo) => (
-                  <Item desc={toDo}></Item>
-                ))
-              }
+      <form>
+        <div className="App">
 
-      </div>
+          <div><input type="text" name="title" value={this.state.title} onChange={this.handleChange} /></div>
+          <button type="button" onClick={this.handleAdd}>ADD</button>
 
+
+          <Header title="To Do List" />
+
+          {
+            this.state.toDoList.map((toDo) => (
+              <Item desc={toDo}></Item>
+            ))
+          }
+
+        </div>
+      </form>
     );
   }
 }
