@@ -20,7 +20,7 @@ class Item extends Component {
     }
 
     render() {
-        const { id, title, isComplete } = this.props.desc;
+        const { id, title, isComplete } = this.props.item;
         return (
             <div>
                 <input type="radio" checked={isComplete} value={id} onClick={() => this.onCheckedItem(id)} />

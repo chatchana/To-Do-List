@@ -11,7 +11,7 @@ class App extends Component {
     this.state = {
       toDoList: [],
       title: "",
-      id: 0
+      id: 1
     }
 
     this.handleAdd = this.handleAdd.bind(this);
@@ -23,7 +23,7 @@ class App extends Component {
 
   handleAdd = () => {
     const newTitle = this.state.title;    
-    const newId  = this.state.id+1;
+    const newId  = this.state.id;
 
     const todoObj = {
       id: newId,
@@ -34,8 +34,8 @@ class App extends Component {
     const toDoList  = this.state.toDoList; 
     const newTodoList = [...toDoList]; 
     newTodoList.push(todoObj); 
-    
-    this.setState({ toDoList: newTodoList , id: newId});
+
+    this.setState({ toDoList: newTodoList , id: newId+1});
   }
 
   handleChange = (e) => {
@@ -56,7 +56,7 @@ class App extends Component {
 
           {
             this.state.toDoList.map((toDo) => (
-              <Item desc={toDo}></Item>
+              <Item item={toDo}></Item>
             ))
           }
 
