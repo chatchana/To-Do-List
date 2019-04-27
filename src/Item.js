@@ -7,8 +7,8 @@ class Item extends Component {
         const {onCheckedItem} = this.props;
         return (
             <div>
-                <input type="checkbox" checked={isComplete} value={id} onClick={() => onCheckedItem(id)} />
-                {title}
+                <input type="checkbox" checked={isComplete} value={id} onClick={() => onCheckedItem(id)} />                
+                <label>{title}</label>
             </div>
         );
     }
