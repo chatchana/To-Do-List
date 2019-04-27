@@ -15,9 +15,6 @@ class App extends Component {
       id: 1,
       isShowAll: true
     }
-
-    this.handleAdd = this.handleAdd.bind(this);
-    this.onCheckedItem = this.onCheckedItem.bind(this);
   }
 
   handleChange = (e)=>{
